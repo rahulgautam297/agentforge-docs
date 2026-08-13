@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor swap / backup files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# In case anyone runs tooling from inside this docs-only repo
+node_modules/
+__pycache__/
+.venv/
+*.pyc
