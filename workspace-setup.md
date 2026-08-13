@@ -17,7 +17,7 @@ Clone or create all seven repositories under one workspace folder — this docum
 └── agentforge-infra/                     # docker-compose, k8s, helm, terraform
 ```
 
-The workspace folder itself (`~/dev/agentforge/`) is **not** a git repository — it is just a container directory. Each of the seven subdirectories is its own independent git repository with its own history, its own CI, and (eventually) its own remote.
+The workspace folder itself (`~/dev/agentforge/`) is **not** a git repository — it is just a container directory. Each of the seven subdirectories is its own independent git repository with its own history and its own remote on GitHub (CI is still unwired — see Phase 11).
 
 ## Repository purposes
 
@@ -37,7 +37,20 @@ The workspace folder itself (`~/dev/agentforge/`) is **not** a git repository �
 
 ## Current state (Phase 0)
 
-All seven repositories are **local-only** — each has been `git init`ed on this machine, but none has a configured git remote yet (no GitHub/GitLab origin). This is intentional for Phase 0: the documentation and schema contract are being fully fleshed out before any remote hosting or CI is wired up. Remote hosting and CI/CD are addressed in Phase 11 of the [implementation plan](docs/architecture/12-implementation-plan.md).
+All seven repositories are hosted publicly on GitHub under the `rahulgautam297` account, one repo per row above. To set up the workspace from scratch on another machine:
+
+```
+mkdir -p ~/dev/agentforge && cd ~/dev/agentforge
+gh repo clone rahulgautam297/agentforge-docs
+gh repo clone rahulgautam297/agentforge-agent-schema
+gh repo clone rahulgautam297/agentforge-frontend
+gh repo clone rahulgautam297/agentforge-control-plane
+gh repo clone rahulgautam297/agentforge-agent-execution-platform
+gh repo clone rahulgautam297/agentforge-showcase-agents
+gh repo clone rahulgautam297/agentforge-infra
+```
+
+(or the equivalent `git clone https://github.com/rahulgautam297/<repo>.git` for each, if you don't have `gh` installed). CI/CD (GitHub Actions, ArgoCD-ready deployment) is still unwired — that's addressed in Phase 11 of the [implementation plan](docs/architecture/12-implementation-plan.md); for now these are plain hosted repos with no workflows configured.
 
 ## Package managers
 
